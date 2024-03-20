@@ -1,0 +1,8 @@
+name: antismash
+channels:
+  - conda-forge
+  - biobakery
+  - bioconda
+  - defaults
+  - cruizperez
+prefix: /home/bioinfo/.conda/envs/antismash
