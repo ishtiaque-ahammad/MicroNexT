@@ -16,7 +16,7 @@ Microbial Next generation sequence analysis Tool (MicroNexT) is an easy-to-use, 
 * Metabolic pathway analysis (Prodigal, MicrobeAnnotator)
 * Identification of antibiotic resistance genes (Abricate)
 * Secondary metabolite identification (Antismash)
-Identification of CRISPR-Cas systems (Cctyper)
+* Identification of CRISPR-Cas systems (Cctyper)
 
 ## Dependencies
 ShotMAP relies on several software tools and requires them to be installed. These tools include:
@@ -42,42 +42,59 @@ ShotMAP relies on several software tools and requires them to be installed. Thes
 ## Installation
 
 ### Clone the repository
-``` git clone https://github.com/ishtiaque-ahammad/ShotMAP ```
+``` git clone https://github.com/ishtiaque-ahammad/MicroNexT ```
 
 ### Navigate to the cloned directory
-``` cd ShotMAP ```
+``` cd MicroNexT ```
 
 ### Make the script executable
-``` chmod +x ShotMAP.sh ```
+``` chmod +x MicroNexT.sh ```
 
 ### Install dependencies
+
 ``` conda env create --file fastp.yml ```
 
-``` conda env create --file megahit.yml ```
+``` conda env create --file unicycler.yml ```
 
-``` conda env create --file metabat2.yml ```
+``` conda env create --file bbmap.yml ```
 
-``` conda env create --file checkm.yml ```
+``` conda env create --file prokka.yml ```
 
 ``` conda env create --file prodigal.yml ```
 
+``` conda env create --file microbeannotator.yml ```
+
 ``` conda env create --file abricate.yml ```
 
-``` conda env create --file dbcan.yml ```
+``` conda env create --file antismash.yml ```
 
-``` conda env create --file microbeannotator.yml ```
+``` conda env create --file cctyper.yml ```
 
 ## Usage
 
-### Prepare your data
-
-Ensure you have your forward and reverse read files in fastq / fastq.gz format with their extensions (e.g., R1.fastq.gz, R2.fastq.gz).
-
 ### Run the script
-```  bash ShotMAP.sh ``` 
+```  bash MicroNexT.sh ``` 
+
+The script will prompt you for the following information:
+
+* Forward read file name
+* Reverse read file name
+* Genus name
+* Species name
+* Number of CPU cores
+
+The script will then proceed with the analysis steps and generate outputs in designated folders.
 
 ### Output
-The script will create separate directories for each analysis step and store the corresponding output files.
+MicroNexT organizes the outputs of various analysis in different folders within the directory you run the script from. These include:
+
+1.major_output_files: Contains core outputs like assembled genome, annotated genome files, and summary tables.
+2.assembled_genome: Stores files related to genome assembly.
+3.annotated_genome: Contains outputs from Prokka annotation.
+4.metabolic_pathways: Stores results from MicrobeAnnotator pathway analysis.
+5.antibiotic_resistant_genes: Contains identified antibiotic resistance genes.
+6.biosynthetic_gene_clusters: Stores outputs from Antismash related to secondary metabolite identification.
+7.crispr_sites: Contains results from Cctyper regarding CRISPR-Cas systems.
 
 ## License
 This project is licensed under the GPL-3.0 license.
